@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EC01458629FA68510093BB2A /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458529FA68510093BB2A /* Models.swift */; };
+		EC01458629FA68510093BB2A /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458529FA68510093BB2A /* SearchResponse.swift */; };
 		EC01458929FA81CC0093BB2A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458829FA81CC0093BB2A /* Extensions.swift */; };
 		EC01458B29FA89600093BB2A /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458A29FA89600093BB2A /* SearchResultTableViewCell.swift */; };
 		ECD3804329FA4754008EFB65 /* TopStoriesNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3804229FA4754008EFB65 /* TopStoriesNewsViewController.swift */; };
@@ -23,7 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EC01458529FA68510093BB2A /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Models.swift; path = Stocks/Models.swift; sourceTree = SOURCE_ROOT; };
+		EC01458529FA68510093BB2A /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchResponse.swift; path = Stocks/SearchResponse.swift; sourceTree = SOURCE_ROOT; };
 		EC01458829FA81CC0093BB2A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EC01458A29FA89600093BB2A /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		ECD3804229FA4754008EFB65 /* TopStoriesNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoriesNewsViewController.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 		ECD3805029FA607D008EFB65 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EC01458529FA68510093BB2A /* Models.swift */,
+				EC01458529FA68510093BB2A /* SearchResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -262,7 +262,7 @@
 				EC01458929FA81CC0093BB2A /* Extensions.swift in Sources */,
 				EC01458B29FA89600093BB2A /* SearchResultTableViewCell.swift in Sources */,
 				ECEF622229F9BF4300675794 /* AppDelegate.swift in Sources */,
-				EC01458629FA68510093BB2A /* Models.swift in Sources */,
+				EC01458629FA68510093BB2A /* SearchResponse.swift in Sources */,
 				ECD3804F29FA5293008EFB65 /* HapticsManager.swift in Sources */,
 				ECD3804529FA47AA008EFB65 /* StockDetailsViewController.swift in Sources */,
 			);
