@@ -63,14 +63,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		ECD3803C29FA45CD008EFB65 /* Models */ = {
+		ECD3803C29FA45CD008EFB65 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				ECD3804A29FA5271008EFB65 /* APICaller.swift */,
 				ECD3804C29FA5280008EFB65 /* PersistentManager.swift */,
 				ECD3804E29FA5293008EFB65 /* HapticsManager.swift */,
 			);
-			path = Models;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		ECD3803D29FA45D4008EFB65 /* App */ = {
@@ -131,6 +131,13 @@
 			path = SearchResultsController;
 			sourceTree = "<group>";
 		};
+		ECD3805029FA607D008EFB65 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		ECEF621529F9BF4300675794 = {
 			isa = PBXGroup;
 			children = (
@@ -151,7 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				ECD3803D29FA45D4008EFB65 /* App */,
-				ECD3803C29FA45CD008EFB65 /* Models */,
+				ECD3803C29FA45CD008EFB65 /* Managers */,
+				ECD3805029FA607D008EFB65 /* Models */,
 				ECD3803A29FA45B6008EFB65 /* Controllers */,
 				ECD3803E29FA45EF008EFB65 /* Resources */,
 				ECEF622F29F9BF4400675794 /* Info.plist */,
