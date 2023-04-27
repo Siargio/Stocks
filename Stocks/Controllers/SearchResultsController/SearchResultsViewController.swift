@@ -8,20 +8,21 @@
 import UIKit
 
 protocol SearchResultViewControllerDelegate: AnyObject {
-    func searchResultsViewControllerDidSelect(searchResult: String)
+    func searchResultsViewControllerDidSelect(searchResult: SearchResult)
 }
 
 final class SearchResultsViewController: UIViewController {
 
     weak var delegate: SearchResultViewControllerDelegate?
 
-    private var results: [String] = []
+    private var results: [SearchResult] = []
 
     private lazy var tableVIew: UITableView = {
         let tableView = UITableView()
         tableView.register(SearchResultTableViewCell.self, forCellReuseIdentifier: SearchResultTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.isHidden = true
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -41,8 +42,9 @@ final class SearchResultsViewController: UIViewController {
         view.addSubview(tableVIew)
     }
 
-    public func update(with results: [String]) {
+    public func update(with results: [SearchResult]) {
         self.results = results
+        tableVIew.isHidden = results.isEmpty
         tableVIew.reloadData()
     }
 }
@@ -52,19 +54,22 @@ final class SearchResultsViewController: UIViewController {
 extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        results.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultTableViewCell.identifier, for: indexPath)
-        cell.textLabel?.text = "AAPL"
-        cell.detailTextLabel?.text = "Apple Inc."
+        let model = results[indexPath.row]
+
+        cell.textLabel?.text = model.displaySymbol
+        cell.detailTextLabel?.text = model.description
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        delegate?.searchResultsViewControllerDidSelect(searchResult: "AAPL")
+        let model = results[indexPath.row]
+        delegate?.searchResultsViewControllerDidSelect(searchResult: model)
     }
 }
