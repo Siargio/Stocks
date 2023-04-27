@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC01458629FA68510093BB2A /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458529FA68510093BB2A /* Models.swift */; };
+		EC01458929FA81CC0093BB2A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458829FA81CC0093BB2A /* Extensions.swift */; };
+		EC01458B29FA89600093BB2A /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458A29FA89600093BB2A /* SearchResultTableViewCell.swift */; };
 		ECD3804329FA4754008EFB65 /* TopStoriesNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3804229FA4754008EFB65 /* TopStoriesNewsViewController.swift */; };
 		ECD3804529FA47AA008EFB65 /* StockDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3804429FA47AA008EFB65 /* StockDetailsViewController.swift */; };
 		ECD3804729FA47CC008EFB65 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3804629FA47CC008EFB65 /* SearchResultsViewController.swift */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC01458529FA68510093BB2A /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Models.swift; path = Stocks/Models.swift; sourceTree = SOURCE_ROOT; };
+		EC01458829FA81CC0093BB2A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		EC01458A29FA89600093BB2A /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		ECD3804229FA4754008EFB65 /* TopStoriesNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoriesNewsViewController.swift; sourceTree = "<group>"; };
 		ECD3804429FA47AA008EFB65 /* StockDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsViewController.swift; sourceTree = "<group>"; };
 		ECD3804629FA47CC008EFB65 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
@@ -45,11 +51,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC01458729FA81B70093BB2A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EC01458829FA81CC0093BB2A /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		ECD3803A29FA45B6008EFB65 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				ECD3804029FA4729008EFB65 /* TopStoriesNewsController */,
 				ECD3803F29FA470A008EFB65 /* WatchListController */,
+				ECD3804029FA4729008EFB65 /* TopStoriesNewsController */,
 				ECD3804829FA4CF6008EFB65 /* StockDetailController */,
 				ECD3804929FA4D27008EFB65 /* SearchResultsController */,
 			);
@@ -127,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				ECD3804629FA47CC008EFB65 /* SearchResultsViewController.swift */,
+				EC01458A29FA89600093BB2A /* SearchResultTableViewCell.swift */,
 			);
 			path = SearchResultsController;
 			sourceTree = "<group>";
@@ -134,6 +149,7 @@
 		ECD3805029FA607D008EFB65 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EC01458529FA68510093BB2A /* Models.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -158,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				ECD3803D29FA45D4008EFB65 /* App */,
+				EC01458729FA81B70093BB2A /* Extensions */,
 				ECD3803C29FA45CD008EFB65 /* Managers */,
 				ECD3805029FA607D008EFB65 /* Models */,
 				ECD3803A29FA45B6008EFB65 /* Controllers */,
@@ -242,7 +259,10 @@
 				ECD3804729FA47CC008EFB65 /* SearchResultsViewController.swift in Sources */,
 				ECD3804329FA4754008EFB65 /* TopStoriesNewsViewController.swift in Sources */,
 				ECD3804D29FA5280008EFB65 /* PersistentManager.swift in Sources */,
+				EC01458929FA81CC0093BB2A /* Extensions.swift in Sources */,
+				EC01458B29FA89600093BB2A /* SearchResultTableViewCell.swift in Sources */,
 				ECEF622229F9BF4300675794 /* AppDelegate.swift in Sources */,
+				EC01458629FA68510093BB2A /* Models.swift in Sources */,
 				ECD3804F29FA5293008EFB65 /* HapticsManager.swift in Sources */,
 				ECD3804529FA47AA008EFB65 /* StockDetailsViewController.swift in Sources */,
 			);

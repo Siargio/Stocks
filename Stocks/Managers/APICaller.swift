@@ -37,10 +37,10 @@ final class APICaller {
 
     private func url(
         for endpoint: EndPoint,
-        queryParams: [String: String] = [:] ) -> URL? {
+        queryParams: [String: String] = [:]) -> URL? {
 
-        return nil
-    }
+            return nil
+        }
 
     private func request<T: Codable>(
         url: URL?,
@@ -64,10 +64,10 @@ final class APICaller {
 
                 do {
                     let result = try JSONDecoder().decode(expecting, from: data)
-                    completion(.success(result))
+                    completion(.success(result))//успех
                 }
                 catch {
-                    completion(.failure(error))
+                    completion(.failure(error))//неудача
                 }
             }
             task.resume()

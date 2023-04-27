@@ -15,6 +15,7 @@ final class PersistenceManager {
     private struct Constants {
 
     }
+    
     private init() {}
 
     //MARK: - Public
