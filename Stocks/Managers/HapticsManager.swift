@@ -5,7 +5,7 @@
 //  Created by Sergio on 27.04.23.
 //
 
-import Foundation
+import UIKit
 
 final class HapticsManager {
     static let shared = HapticsManager()
