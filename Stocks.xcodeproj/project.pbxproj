@@ -12,6 +12,10 @@
 		EC01458B29FA89600093BB2A /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458A29FA89600093BB2A /* SearchResultTableViewCell.swift */; };
 		EC01458E29FBA7800093BB2A /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = EC01458D29FBA7800093BB2A /* FloatingPanel */; };
 		EC01459029FBBA260093BB2A /* NewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458F29FBBA260093BB2A /* NewHeaderView.swift */; };
+		EC01459229FBFCA00093BB2A /* NewStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01459129FBFCA00093BB2A /* NewStory.swift */; };
+		EC01459429FC0A3E0093BB2A /* NewStoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01459329FC0A3E0093BB2A /* NewStoryTableViewCell.swift */; };
+		EC01459729FC6D060093BB2A /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = EC01459629FC6D060093BB2A /* SDWebImage */; };
+		EC01459929FC6D060093BB2A /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = EC01459829FC6D060093BB2A /* SDWebImageMapKit */; };
 		ECD3804329FA4754008EFB65 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3804229FA4754008EFB65 /* NewsViewController.swift */; };
 		ECD3804529FA47AA008EFB65 /* StockDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3804429FA47AA008EFB65 /* StockDetailsViewController.swift */; };
 		ECD3804729FA47CC008EFB65 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3804629FA47CC008EFB65 /* SearchResultsViewController.swift */; };
@@ -29,6 +33,8 @@
 		EC01458829FA81CC0093BB2A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EC01458A29FA89600093BB2A /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		EC01458F29FBBA260093BB2A /* NewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHeaderView.swift; sourceTree = "<group>"; };
+		EC01459129FBFCA00093BB2A /* NewStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewStory.swift; path = Stocks/Controllers/NewStory.swift; sourceTree = SOURCE_ROOT; };
+		EC01459329FC0A3E0093BB2A /* NewStoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStoryTableViewCell.swift; sourceTree = "<group>"; };
 		ECD3804229FA4754008EFB65 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		ECD3804429FA47AA008EFB65 /* StockDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsViewController.swift; sourceTree = "<group>"; };
 		ECD3804629FA47CC008EFB65 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC01459729FC6D060093BB2A /* SDWebImage in Frameworks */,
+				EC01459929FC6D060093BB2A /* SDWebImageMapKit in Frameworks */,
 				EC01458E29FBA7800093BB2A /* FloatingPanel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				EC01458F29FBBA260093BB2A /* NewHeaderView.swift */,
+				EC01459329FC0A3E0093BB2A /* NewStoryTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -155,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				EC01458529FA68510093BB2A /* SearchResponse.swift */,
+				EC01459129FBFCA00093BB2A /* NewStory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -207,6 +217,8 @@
 			name = Stocks;
 			packageProductDependencies = (
 				EC01458D29FBA7800093BB2A /* FloatingPanel */,
+				EC01459629FC6D060093BB2A /* SDWebImage */,
+				EC01459829FC6D060093BB2A /* SDWebImageMapKit */,
 			);
 			productName = Stocks;
 			productReference = ECEF621E29F9BF4300675794 /* Stocks.app */;
@@ -238,6 +250,7 @@
 			mainGroup = ECEF621529F9BF4300675794;
 			packageReferences = (
 				EC01458C29FBA7800093BB2A /* XCRemoteSwiftPackageReference "FloatingPanel" */,
+				EC01459529FC6D060093BB2A /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = ECEF621F29F9BF4300675794 /* Products */;
 			projectDirPath = "";
@@ -276,6 +289,8 @@
 				ECEF622229F9BF4300675794 /* AppDelegate.swift in Sources */,
 				EC01458629FA68510093BB2A /* SearchResponse.swift in Sources */,
 				ECD3804F29FA5293008EFB65 /* HapticsManager.swift in Sources */,
+				EC01459229FBFCA00093BB2A /* NewStory.swift in Sources */,
+				EC01459429FC0A3E0093BB2A /* NewStoryTableViewCell.swift in Sources */,
 				ECD3804529FA47AA008EFB65 /* StockDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,6 +519,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		EC01459529FC6D060093BB2A /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -511,6 +534,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EC01458C29FBA7800093BB2A /* XCRemoteSwiftPackageReference "FloatingPanel" */;
 			productName = FloatingPanel;
+		};
+		EC01459629FC6D060093BB2A /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC01459529FC6D060093BB2A /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		EC01459829FC6D060093BB2A /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC01459529FC6D060093BB2A /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
