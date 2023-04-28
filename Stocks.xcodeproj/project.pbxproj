@@ -10,7 +10,9 @@
 		EC01458629FA68510093BB2A /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458529FA68510093BB2A /* SearchResponse.swift */; };
 		EC01458929FA81CC0093BB2A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458829FA81CC0093BB2A /* Extensions.swift */; };
 		EC01458B29FA89600093BB2A /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458A29FA89600093BB2A /* SearchResultTableViewCell.swift */; };
-		ECD3804329FA4754008EFB65 /* TopStoriesNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3804229FA4754008EFB65 /* TopStoriesNewsViewController.swift */; };
+		EC01458E29FBA7800093BB2A /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = EC01458D29FBA7800093BB2A /* FloatingPanel */; };
+		EC01459029FBBA260093BB2A /* NewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458F29FBBA260093BB2A /* NewHeaderView.swift */; };
+		ECD3804329FA4754008EFB65 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3804229FA4754008EFB65 /* NewsViewController.swift */; };
 		ECD3804529FA47AA008EFB65 /* StockDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3804429FA47AA008EFB65 /* StockDetailsViewController.swift */; };
 		ECD3804729FA47CC008EFB65 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3804629FA47CC008EFB65 /* SearchResultsViewController.swift */; };
 		ECD3804B29FA5271008EFB65 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3804A29FA5271008EFB65 /* APICaller.swift */; };
@@ -26,7 +28,8 @@
 		EC01458529FA68510093BB2A /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchResponse.swift; path = Stocks/SearchResponse.swift; sourceTree = SOURCE_ROOT; };
 		EC01458829FA81CC0093BB2A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EC01458A29FA89600093BB2A /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
-		ECD3804229FA4754008EFB65 /* TopStoriesNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoriesNewsViewController.swift; sourceTree = "<group>"; };
+		EC01458F29FBBA260093BB2A /* NewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHeaderView.swift; sourceTree = "<group>"; };
+		ECD3804229FA4754008EFB65 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		ECD3804429FA47AA008EFB65 /* StockDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailsViewController.swift; sourceTree = "<group>"; };
 		ECD3804629FA47CC008EFB65 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		ECD3804A29FA5271008EFB65 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
@@ -45,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC01458E29FBA7800093BB2A /* FloatingPanel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				ECD3803F29FA470A008EFB65 /* WatchListController */,
-				ECD3804029FA4729008EFB65 /* TopStoriesNewsController */,
+				ECD3804029FA4729008EFB65 /* NewsViewController */,
 				ECD3804829FA4CF6008EFB65 /* StockDetailController */,
 				ECD3804929FA4D27008EFB65 /* SearchResultsController */,
 			);
@@ -113,18 +117,19 @@
 			path = WatchListController;
 			sourceTree = "<group>";
 		};
-		ECD3804029FA4729008EFB65 /* TopStoriesNewsController */ = {
+		ECD3804029FA4729008EFB65 /* NewsViewController */ = {
 			isa = PBXGroup;
 			children = (
-				ECD3804229FA4754008EFB65 /* TopStoriesNewsViewController.swift */,
+				ECD3804229FA4754008EFB65 /* NewsViewController.swift */,
 				ECD3804129FA473F008EFB65 /* View */,
 			);
-			path = TopStoriesNewsController;
+			path = NewsViewController;
 			sourceTree = "<group>";
 		};
 		ECD3804129FA473F008EFB65 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EC01458F29FBBA260093BB2A /* NewHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -200,6 +205,9 @@
 			dependencies = (
 			);
 			name = Stocks;
+			packageProductDependencies = (
+				EC01458D29FBA7800093BB2A /* FloatingPanel */,
+			);
 			productName = Stocks;
 			productReference = ECEF621E29F9BF4300675794 /* Stocks.app */;
 			productType = "com.apple.product-type.application";
@@ -228,6 +236,9 @@
 				Base,
 			);
 			mainGroup = ECEF621529F9BF4300675794;
+			packageReferences = (
+				EC01458C29FBA7800093BB2A /* XCRemoteSwiftPackageReference "FloatingPanel" */,
+			);
 			productRefGroup = ECEF621F29F9BF4300675794 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -254,10 +265,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC01459029FBBA260093BB2A /* NewHeaderView.swift in Sources */,
 				ECEF622629F9BF4300675794 /* WatchListViewController.swift in Sources */,
 				ECD3804B29FA5271008EFB65 /* APICaller.swift in Sources */,
 				ECD3804729FA47CC008EFB65 /* SearchResultsViewController.swift in Sources */,
-				ECD3804329FA4754008EFB65 /* TopStoriesNewsViewController.swift in Sources */,
+				ECD3804329FA4754008EFB65 /* NewsViewController.swift in Sources */,
 				ECD3804D29FA5280008EFB65 /* PersistentManager.swift in Sources */,
 				EC01458929FA81CC0093BB2A /* Extensions.swift in Sources */,
 				EC01458B29FA89600093BB2A /* SearchResultTableViewCell.swift in Sources */,
@@ -482,6 +494,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EC01458C29FBA7800093BB2A /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scenee/FloatingPanel";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EC01458D29FBA7800093BB2A /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC01458C29FBA7800093BB2A /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ECEF621629F9BF4300675794 /* Project object */;
 }
