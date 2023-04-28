@@ -105,7 +105,7 @@ extension WatchListViewController: SearchResultViewControllerDelegate {
     }
 }
 
-//MARK: -
+//MARK: - FloatingPanelControllerDelegate
 
 extension WatchListViewController: FloatingPanelControllerDelegate {
     func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
