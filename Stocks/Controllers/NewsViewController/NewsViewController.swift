@@ -5,6 +5,7 @@
 //  Created by Sergio on 27.04.23.
 //
 
+import SafariServices
 import UIKit
 
 class NewsViewController: UIViewController {
@@ -12,17 +13,7 @@ class NewsViewController: UIViewController {
     //MARK: - Property
 
     private let type: Type
-    private var stories: [NewStory] = [
-        NewStory(
-            category: "tech",
-            datetime: 123,
-            headline: "Some headline should go here!",
-            image: "",
-            related: "Related",
-            source: "CNBC",
-            summary: "",
-            url: "")
-    ]
+    private var stories = [NewStory]()
 
     enum `Type` {
         case topStories
@@ -79,11 +70,22 @@ class NewsViewController: UIViewController {
     }
 
     private func fetchNews() {
-
+        APICaller.shared.news(for: type) { result in
+            switch result {
+            case .success(let stories):
+                DispatchQueue.main.async {
+                    self.stories = stories
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 
     private func openUrl(url: URL) {
-
+        let vs = SFSafariViewController(url: url)
+        present(vs, animated: true)
     }
 }
 
@@ -121,5 +123,20 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         //open new story
+        let story = stories[indexPath.row]
+        guard let url = URL(string: story.url) else {
+            presentFailedToOpenAlert()
+            return
+        }
+        openUrl(url: url)
+    }
+
+    private func presentFailedToOpenAlert() {
+        let alert = UIAlertController(
+            title: "Unable to Open",
+            message: "We were unable to open the article",
+            preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+        present(alert, animated: true)
     }
 }
