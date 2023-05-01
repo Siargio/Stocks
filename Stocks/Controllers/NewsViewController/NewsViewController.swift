@@ -38,6 +38,8 @@ class NewsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    //MARK: - UIElements
+
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
