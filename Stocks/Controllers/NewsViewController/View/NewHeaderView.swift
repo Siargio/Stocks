@@ -32,7 +32,7 @@ class NewHeaderView: UITableViewHeaderFooterView {
         return label
     }()
 
-    private let button: UIButton = {
+    let button: UIButton = {
         let button = UIButton()
         button.setTitle("+ WatchList", for: .normal)
         button.backgroundColor = .systemBlue

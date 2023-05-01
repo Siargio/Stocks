@@ -13,17 +13,17 @@ class WatchListViewController: UIViewController {
     private var searchTimer: Timer?
     private var panel: FloatingPanelController?
 
+    private var watchlistMap: [String: [CandleStick]] = [:]
+    private var viewModels: [WatchListTableViewCell.ViewModel] = []
+
+    private var observer: NSObjectProtocol?
+
     static var maxChangeWidth: CGFloat = 0 {
         didSet {
 
         }
     }
-    
-    //model
-    private var watchlistMap: [String: [CandleStick]] = [:]
-    //ViewModel
-    private var viewModels: [WatchListTableViewCell.ViewModel] = []
-    
+
     //MARK: - UIElements
 
     private let tableView: UITableView = {
@@ -43,6 +43,7 @@ class WatchListViewController: UIViewController {
         fetchWatchlistData()
         setUpFloatingPanel()
         setUpTitleView()
+        setUoObserver()
     }
 
     override func viewDidLayoutSubviews() {
@@ -52,12 +53,23 @@ class WatchListViewController: UIViewController {
 
     //MARK: - Setups
 
+    private func setUoObserver() {
+        observer = NotificationCenter.default.addObserver(
+            forName: .didAddToWatchList,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.viewModels.removeAll()
+            self?.fetchWatchlistData()
+        }
+    }
+
     private func fetchWatchlistData() {
         let symbols = PersistenceManager.shared.watchlist
 
         let group = DispatchGroup()
 
-        for symbol in symbols {
+        for symbol in symbols where watchlistMap[symbol] == nil {
             group.enter()
 
             APICaller.shared.markData(for: symbol) { [weak self] result in
@@ -199,10 +211,12 @@ extension WatchListViewController: UISearchResultsUpdating {
 
 extension WatchListViewController: SearchResultViewControllerDelegate {
     func searchResultsViewControllerDidSelect(searchResult: SearchResult) {
-        // Present stock details for selection
-        print("Did select: \(searchResult.displaySymbol)")
         navigationItem.searchController?.searchBar.resignFirstResponder()
-        let vc = StockDetailsViewController()
+
+        let vc = StockDetailsViewController(
+            symbol: searchResult.displaySymbol,
+            companyName: searchResult.description
+        )
         let navVc = UINavigationController(rootViewController: vc)
         vc.title = searchResult.description
         present(navVc, animated: true)
@@ -262,6 +276,15 @@ extension WatchListViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // open details for selection
+        let viewModel = viewModels[indexPath.row]
+
+        let vs = StockDetailsViewController(
+            symbol: viewModel.symbol,
+            companyName: viewModel.companyName,
+            candleStickData: watchlistMap[viewModel.symbol] ?? []
+        )
+        let navVC = UINavigationController(rootViewController: vs)
+        present(navVC, animated: true)
     }
 }
 
