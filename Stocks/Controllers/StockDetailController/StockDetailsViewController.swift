@@ -13,7 +13,7 @@ final class StockDetailsViewController: UIViewController {
 
     private let symbol: String
     private let companyName: String
-    private let candleStickData: [CandleStick]
+    private var candleStickData: [CandleStick]
 
     private var stories: [NewStory] = []
     private var metric: Metrics?
@@ -90,10 +90,21 @@ final class StockDetailsViewController: UIViewController {
 
         if candleStickData.isEmpty {
             group.enter()
+            APICaller.shared.markData(for: symbol) { [weak self] result in
+                defer {
+                    group.leave()
+                }
+
+                switch result {
+                case .success(let response):
+                    self?.candleStickData = response.candleSticks
+                case .failure(let error):
+                    print(error)
+                }
+            }
         }
 
         group.enter()
-
         APICaller.shared.financialMetrics(for: symbol) { [weak self] result in
             defer {
                 group.leave()
@@ -144,14 +155,29 @@ final class StockDetailsViewController: UIViewController {
             viewModels.append(.init(name: "10D Vol.", value: "\(metric.TenDayAverageTradingVolume)"))
         }
 
+        let change = getChangePercentage(symbol: symbol, data: candleStickData)
         headerView.configure(
             chartViewModle: .init(
-                data: [],
-                showLegend: false,
-                showAxis: false),
+                data: candleStickData.reversed().map { $0.close },
+                showLegend: true,
+                showAxis: true,
+                fillColor: change < 0 ? .systemRed : .systemGreen),
             metricViewModels: viewModels)
 
         tableView.tableHeaderView = headerView
+    }
+
+    private func getChangePercentage(symbol: String, data: [CandleStick]) -> Double {
+        let latestDate = data[0].date
+        guard let latestClose = data.first?.close,
+              let priorClose = data.first(where: {
+                  !Calendar.current.isDate($0.date, inSameDayAs: latestDate)
+              })?.close else {
+            return 0
+        }
+
+        let diff = 1 - (priorClose/latestClose)
+        return diff
     }
 }
 
