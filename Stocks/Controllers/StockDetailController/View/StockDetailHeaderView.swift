@@ -49,7 +49,7 @@ class StockDetailHeaderView: UIView, UICollectionViewDelegate, UICollectionViewD
     }
 
     func configure(chartViewModle: StockChartView.ViewModel, metricViewModels: [MetricCollectionViewCell.ViewModel]) {
-        
+        chartView.configure(with: chartViewModle)
         self.metricViewModels = metricViewModels
         collectionView.reloadData()
     }

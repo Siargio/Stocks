@@ -28,6 +28,7 @@
 		ECD3804B29FA5271008EFB65 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3804A29FA5271008EFB65 /* APICaller.swift */; };
 		ECD3804D29FA5280008EFB65 /* PersistentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3804C29FA5280008EFB65 /* PersistentManager.swift */; };
 		ECD3804F29FA5293008EFB65 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD3804E29FA5293008EFB65 /* HapticsManager.swift */; };
+		ECE50E3E2A0058CC00C2B7DD /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = ECE50E3D2A0058CC00C2B7DD /* Charts */; };
 		ECEF622229F9BF4300675794 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEF622129F9BF4300675794 /* AppDelegate.swift */; };
 		ECEF622629F9BF4300675794 /* WatchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEF622529F9BF4300675794 /* WatchListViewController.swift */; };
 		ECEF622B29F9BF4400675794 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEF622A29F9BF4400675794 /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 				EC01459729FC6D060093BB2A /* SDWebImage in Frameworks */,
 				EC01459929FC6D060093BB2A /* SDWebImageMapKit in Frameworks */,
 				EC01458E29FBA7800093BB2A /* FloatingPanel in Frameworks */,
+				ECE50E3E2A0058CC00C2B7DD /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +247,7 @@
 				EC01458D29FBA7800093BB2A /* FloatingPanel */,
 				EC01459629FC6D060093BB2A /* SDWebImage */,
 				EC01459829FC6D060093BB2A /* SDWebImageMapKit */,
+				ECE50E3D2A0058CC00C2B7DD /* Charts */,
 			);
 			productName = Stocks;
 			productReference = ECEF621E29F9BF4300675794 /* Stocks.app */;
@@ -277,6 +280,7 @@
 			packageReferences = (
 				EC01458C29FBA7800093BB2A /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 				EC01459529FC6D060093BB2A /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				ECE50E3C2A0058CC00C2B7DD /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = ECEF621F29F9BF4300675794 /* Products */;
 			projectDirPath = "";
@@ -559,6 +563,14 @@
 				kind = branch;
 			};
 		};
+		ECE50E3C2A0058CC00C2B7DD /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -576,6 +588,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EC01459529FC6D060093BB2A /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
+		};
+		ECE50E3D2A0058CC00C2B7DD /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ECE50E3C2A0058CC00C2B7DD /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
