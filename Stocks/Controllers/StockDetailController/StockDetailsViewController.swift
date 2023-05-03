@@ -7,15 +7,21 @@
 import SafariServices
 import UIKit
 
+/// VC to show stock details
 final class StockDetailsViewController: UIViewController {
 
     //MARK: - Properties
 
+    /// Stock symbol
     private let symbol: String
+    /// Company name
     private let companyName: String
+    /// Company of data
     private var candleStickData: [CandleStick]
 
+    /// Collection of news Stories
     private var stories: [NewStory] = []
+    /// company metrics
     private var metric: Metrics?
     
     //MARK: - UIElements
@@ -31,11 +37,7 @@ final class StockDetailsViewController: UIViewController {
 
     //MARK: - Init
 
-    init(
-        symbol: String,
-        companyName: String,
-        candleStickData: [CandleStick] = []
-    ) {
+    init(symbol: String, companyName: String, candleStickData: [CandleStick] = []) {
         self.symbol = symbol
         self.companyName = companyName
         self.candleStickData = candleStickData
@@ -65,14 +67,15 @@ final class StockDetailsViewController: UIViewController {
 
     //MARK: - Setups
 
+    /// Sets up close Button
     private func setUpCloseButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .close,
             target: self,
-            action: #selector(didTapClose)
-        )
+            action: #selector(didTapClose))
     }
 
+    /// Handle close button tap
     @objc private func didTapClose() {
         dismiss(animated: true)
     }
@@ -85,6 +88,7 @@ final class StockDetailsViewController: UIViewController {
             frame: CGRect(x: 0, y: 0, width: view.width, height: (view.width * 0.7) + 100))
     }
 
+    /// Fetch financial metrics
     private func fetchFinancialData() {
         let group = DispatchGroup()
 
@@ -123,6 +127,7 @@ final class StockDetailsViewController: UIViewController {
         }
     }
 
+    /// Fetch news for given type
     private func fetchNews() {
         APICaller.shared.news(for: .compan(symbol: symbol)) { result in
             switch result {
@@ -137,6 +142,7 @@ final class StockDetailsViewController: UIViewController {
         }
     }
 
+    /// Render chart and metrics
     private func renderChart() {
         // Chart VM | FinancialMetricVideoModel
         let headerView = StockDetailHeaderView(
@@ -167,6 +173,11 @@ final class StockDetailsViewController: UIViewController {
         tableView.tableHeaderView = headerView
     }
 
+    /// Get change percenetage
+    /// - Parameters:
+    /// - symbol: Symbol of company
+    /// - data: Collection of data
+    /// - Returns: Percent
     private func getChangePercentage(symbol: String, data: [CandleStick]) -> Double {
         let latestDate = data[0].date
         guard let latestClose = data.first?.close,
@@ -217,6 +228,9 @@ extension StockDetailsViewController: UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let url = URL(string: stories[indexPath.row].url) else { return }
+
+        HapticsManager.shared.vibrateForSelection()
+
         let vc = SFSafariViewController(url: url)
         present(vc, animated: true)
     }
@@ -226,6 +240,8 @@ extension StockDetailsViewController: UITableViewDelegate, UITableViewDataSource
 
 extension StockDetailsViewController: NewHeaderViewDelegate {
     func newHeaderViewDidTappAddButton(_ headerView: NewHeaderView) {
+        HapticsManager.shared.vibrate(for: .success)
+
         headerView.button.isHidden = true
         PersistenceManager.shared.addToWatchList(symbol: symbol, companyName: companyName)
 

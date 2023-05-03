@@ -7,15 +7,25 @@
 
 import UIKit
 
+/// Delegate foe search result
 protocol SearchResultViewControllerDelegate: AnyObject {
+    /// Notify delegate of selection
+    /// - Parameter searchResult: Result that was picked
     func searchResultsViewControllerDidSelect(searchResult: SearchResult)
 }
 
+/// VC to show search result
 final class SearchResultsViewController: UIViewController {
 
+    //MARK: - Properties
+
+    /// delegate to get events
     weak var delegate: SearchResultViewControllerDelegate?
 
+    /// Collection of results
     private var results: [SearchResult] = []
+
+    //MARK: - UIElements
 
     private lazy var tableVIew: UITableView = {
         let tableView = UITableView()
@@ -27,11 +37,15 @@ final class SearchResultsViewController: UIViewController {
         return tableView
     }()
 
+    //MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setUpTable()
     }
+
+    //MARK: - Setups
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

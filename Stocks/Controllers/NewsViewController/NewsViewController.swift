@@ -8,17 +8,22 @@
 import SafariServices
 import UIKit
 
-class NewsViewController: UIViewController {
+/// Controller to show news
+final class NewsViewController: UIViewController {
 
     //MARK: - Property
 
+    /// Instance of a type
     private let type: Type
+    /// Collection of models
     private var stories = [NewStory]()
 
+    /// Type of news
     enum `Type` {
         case topStories
         case compan(symbol: String)
 
+        /// Title for given type
         var title: String {
             switch self {
             case .topStories:
@@ -29,6 +34,9 @@ class NewsViewController: UIViewController {
         }
     }
 
+    //MARK: - Init
+
+    /// Create VC with type
     init(type: Type) {
         self.type = type
         super.init(nibName: nil, bundle: nil)
@@ -71,6 +79,7 @@ class NewsViewController: UIViewController {
         tableView.dataSource = self
     }
 
+    /// Fetch news models
     private func fetchNews() {
         APICaller.shared.news(for: type) { result in
             switch result {
@@ -85,11 +94,15 @@ class NewsViewController: UIViewController {
         }
     }
 
+    /// Open a Story
+    /// - Parameter url: URL to open
     private func openUrl(url: URL) {
         let vs = SFSafariViewController(url: url)
         present(vs, animated: true)
     }
 }
+
+//MARK: - UITableViewDelegate
 
 extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -100,7 +113,6 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewStoryTableViewCell.identifier, for: indexPath) as? NewStoryTableViewCell else {
             fatalError()
         }
-
         cell.configure(with: .init(model: stories[indexPath.row]))
 
         return cell
@@ -124,6 +136,8 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        HapticsManager.shared.vibrateForSelection()
+
         //open new story
         let story = stories[indexPath.row]
         guard let url = URL(string: story.url) else {
@@ -134,6 +148,8 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     private func presentFailedToOpenAlert() {
+        HapticsManager.shared.vibrate(for: .error)
+
         let alert = UIAlertController(
             title: "Unable to Open",
             message: "We were unable to open the article",
