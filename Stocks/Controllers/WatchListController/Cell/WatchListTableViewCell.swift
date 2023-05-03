@@ -7,17 +7,21 @@
 
 import UIKit
 
+/// Delegate to Notify of cell events
 protocol WatchListTableViewCellDelegate: AnyObject {
     func didUpdateMaxWidth()
 }
 
-class WatchListTableViewCell: UITableViewCell {
-
+/// Table cell for watch list item
+final class WatchListTableViewCell: UITableViewCell {
+    /// Cell id
     static let identifier = "WatchListTableViewCell"
+    /// Ideal height of cell
     static let preferredHeight: CGFloat = 60
-
+    /// Delegate
     weak var delegate: WatchListTableViewCellDelegate?
 
+    /// Watchlist table cell viewModel
     struct ViewModel {
         let symbol: String
         let companyName: String
@@ -26,6 +30,8 @@ class WatchListTableViewCell: UITableViewCell {
         let changePercentage: String
         let chartViewModel: StockChartView.ViewModel
     }
+
+    //MARK: - UIElements
 
     private let symbolLabel: UILabel = {
         let label = UILabel()
@@ -63,6 +69,8 @@ class WatchListTableViewCell: UITableViewCell {
         return chart
     }()
 
+    //MARK: - Init
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.clipsToBounds = true
@@ -72,6 +80,8 @@ class WatchListTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    //MARK: - Setups
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -131,6 +141,8 @@ class WatchListTableViewCell: UITableViewCell {
         miniChartView.reset()
     }
 
+    /// Configure view
+    /// - Parameter viewModel: View ViewModel
     public func configure(with videoModel: ViewModel) {
         symbolLabel.text = videoModel.symbol
         nameLabel.text = videoModel.companyName

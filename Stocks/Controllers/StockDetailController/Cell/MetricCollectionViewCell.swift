@@ -7,13 +7,18 @@
 
 import UIKit
 
-class MetricCollectionViewCell: UICollectionViewCell {
+/// Metric table cell
+final class MetricCollectionViewCell: UICollectionViewCell {
+    /// Cell id
     static let identifier = "MetricCollectionViewCell"
 
+    /// Metric table cell viewModel
     struct ViewModel {
         let name: String
         let value: String
     }
+
+    //MARK: - UIElements
 
     private let nameLabel: UILabel = {
         let label = UILabel()
@@ -26,6 +31,8 @@ class MetricCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
+    //MARK: - Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.clipsToBounds = true
@@ -35,6 +42,8 @@ class MetricCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    //MARK: - Setups
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -50,6 +59,8 @@ class MetricCollectionViewCell: UICollectionViewCell {
         valueLabel.text = nil
     }
 
+    /// Configure view
+    /// - Parameter viewModel: views ViewModel
     func configure(with viewModel: ViewModel) {
         nameLabel.text = viewModel.name + ":"
         valueLabel.text = viewModel.value

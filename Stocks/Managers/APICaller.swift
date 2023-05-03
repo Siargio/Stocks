@@ -7,60 +7,75 @@
 
 import Foundation
 
+/// Object to manage api calls
 final class APICaller {
+    /// Singleton
     static let shared = APICaller()
 
+    /// Constants
     private struct Constants {
         static let apiKey = "ch55u81r01quc2n54r6gch55u81r01quc2n54r70"
-        static let sandboxApiKey = ""
         static let baseUrl = "https://finnhub.io/api/v1/"
         static let day: TimeInterval = 3600 * 24
     }
-    
+
+    //Private constructor
     private init() {}
 
     //MARK: - Public
 
-    public func search(
-        query: String,
-        completion: @escaping (Result<SearchResponse, Error>) -> Void) {
-
-            guard let safeQuery = query.addingPercentEncoding(
-                withAllowedCharacters: .urlQueryAllowed) else {
-                return // проверка на пробел
-            }
-
-            request(url: url(for: .search, queryParams: ["q":query]),
-                    expecting: SearchResponse.self,
-                    completion: completion)
+    /// Search for a company
+    /// - Parameters:
+    /// - query: Query string(symbol or name)
+    /// - completion: Callback for result
+    public func search(query: String, completion: @escaping (Result<SearchResponse, Error>) -> Void) {
+        guard let safeQuery = query.addingPercentEncoding(
+            withAllowedCharacters: .urlQueryAllowed) else {
+            return // проверка на пробел
         }
 
-    // search stocks
+        request(
+            url: url(for: .search, queryParams: ["q":safeQuery]),
+            expecting: SearchResponse.self,
+            completion: completion)
+    }
+
+    /// Get news for type
+    /// - Parameters:
+    /// - type: Company or top stories
+    /// - completion: Result callback
     public func news(for type: NewsViewController.`Type`, completion: @escaping (Result<[NewStory], Error>) -> Void) {
         switch type {
         case .topStories:
-            let url = url(for: .topStories, queryParams: ["category":"general"])
-            request(url: url, expecting: [NewStory].self, completion: completion)
+            request(
+                url: url(for: .topStories, queryParams: ["category":"general"]),
+                expecting: [NewStory].self,
+                completion: completion)
         case .compan(let symbol):
             let today = Date()
             let oneMonthBack = today.addingTimeInterval(-(Constants.day * 7))
-            let url = url(
-                for: .companyNews,
-                queryParams: [
-                    "symbol":symbol,
-                    "from": DateFormatter.newsDateFormatter.string(from: oneMonthBack),
-                    "to": DateFormatter.newsDateFormatter.string(from: today)
-                ])
-
-            request(url: url, expecting: [NewStory].self, completion: completion)
+            request(
+                url: url(
+                    for: .companyNews,
+                    queryParams: [
+                        "symbol":symbol,
+                        "from": DateFormatter.newsDateFormatter.string(from: oneMonthBack),
+                        "to": DateFormatter.newsDateFormatter.string(from: today)
+                    ]),
+                expecting: [NewStory].self,
+                completion: completion)
         }
     }
 
+    /// Get market data
+    /// - Parameters:
+    /// - symbol: Given symbol
+    /// - numberOfDays: Number of days back from today
+    /// - completion: Result callback
     public func markData(for symbol: String, numberOfDays: TimeInterval = 7, completion: @escaping (Result<MarketDataResponse, Error>) -> Void) {
 
         let today = Date().addingTimeInterval(-(Constants.day))
         let prior = today.addingTimeInterval(-(Constants.day * numberOfDays))
-
         request(
             url: url(
                 for: .marketData,
@@ -74,11 +89,14 @@ final class APICaller {
             completion: completion)
     }
 
+    /// Get financial metrics
+    /// - Parameters:
+    /// - symbol: Symbol of company
+    /// - completion: Result callback
     public func financialMetrics(for symbol: String, completion: @escaping (Result<FinancialMetricsResponse, Error>) -> Void) {
         let url = url(
             for: .financials,
             queryParams: ["symbol": symbol, "metric": "all"])
-
         request(
             url: url,
             expecting: FinancialMetricsResponse.self,
@@ -87,6 +105,7 @@ final class APICaller {
     
     //MARK: - Private
 
+    ///API Endpoints
     private enum EndPoint: String {
         case search
         case topStories = "news"
@@ -95,60 +114,64 @@ final class APICaller {
         case financials = "stock/metric"
     }
 
+    ///API Errors
     private enum APIError: Error {
         case noDataReturned
         case invalidUrl
     }
 
-    private func url(
-        for endpoint: EndPoint,
-        queryParams: [String: String] = [:]) -> URL? {
+    /// Get news for type
+    /// - Parameters:
+    /// - endpoint: Endpoint to create for
+    /// - completion: Additional query arguments
+    ///  - Returns: Optional URL
+    private func url(for endpoint: EndPoint, queryParams: [String: String] = [:]) -> URL? {
+        var urlString = Constants.baseUrl + endpoint.rawValue
 
-            var urlString = Constants.baseUrl + endpoint.rawValue
+        var queryItems = [URLQueryItem]()
 
-            var queryItems = [URLQueryItem]()
+        // add any parameters
+        for (name, value) in queryParams {
+            queryItems.append(.init(name: name, value: value))
+        }
+        // add token
+        queryItems.append(.init(name: "token", value: Constants.apiKey))
 
-            // add any parameters
-            for (name, value) in queryParams {
-                queryItems.append(.init(name: name, value: value))
-            }
-            // add token
-            queryItems.append(.init(name: "token", value: Constants.apiKey))
+        // Convert queri items to suffix string
+        urlString += "?" + queryItems.map { "\($0.name)=\($0.value ?? "")" }.joined(separator: "&")
+        return URL(string: urlString)
+    }
 
-            // Convert queri items to suffix string
-            urlString += "?" + queryItems.map { "\($0.name)=\($0.value ?? "")" }.joined(separator: "&")
-            return URL(string: urlString)
+    /// Perform api call
+    /// - Parameters:
+    /// - url: URL to hit
+    /// - expecting: Type we expect to decode data to
+    /// - completion: Result callback
+    private func request<T: Codable>(url: URL?, expecting: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
+        guard let url = url else {
+            //Invalid url
+            completion(.failure(APIError.invalidUrl))
+            return
         }
 
-    private func request<T: Codable>(
-        url: URL?,
-        expecting: T.Type,
-        completion: @escaping (Result<T, Error>) -> Void) {
-
-            guard let url = url else {
-                //Invalid url
-                completion(.failure(APIError.invalidUrl))
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil else {
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.failure(APIError.noDataReturned))
+                }
                 return
             }
 
-            let task = URLSession.shared.dataTask(with: url) { data, _, error in
-                guard let data = data, error == nil else {
-                    if let error = error {
-                        completion(.failure(error))
-                    } else {
-                        completion(.failure(APIError.noDataReturned))
-                    }
-                    return
-                }
-
-                do {
-                    let result = try JSONDecoder().decode(expecting, from: data)
-                    completion(.success(result))//успех
-                }
-                catch {
-                    completion(.failure(error))//неудача
-                }
+            do {
+                let result = try JSONDecoder().decode(expecting, from: data)
+                completion(.success(result))//успех
             }
-            task.resume()
+            catch {
+                completion(.failure(error))//неудача
+            }
         }
+        task.resume()
+    }
 }

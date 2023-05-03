@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Represent news story
 struct NewStory: Codable {
     let category: String
     let datetime: TimeInterval

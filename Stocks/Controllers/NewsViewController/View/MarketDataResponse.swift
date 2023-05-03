@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import UIKit
 
+/// Market data response
 struct MarketDataResponse: Codable {
     let open: [Double]
     let close: [Double]
@@ -18,13 +18,14 @@ struct MarketDataResponse: Codable {
 
     enum CodingKeys: String, CodingKey {
         case open = "o"
+        case low = "l"
         case close = "c"
         case high = "h"
-        case low = "l"
         case status = "s"
         case timestamps = "t"
     }
 
+    /// Convert market data to array of candle stick models
     var candleSticks: [CandleStick] {
         var result = [CandleStick]()
 
@@ -43,6 +44,7 @@ struct MarketDataResponse: Codable {
     }
 }
 
+/// Model to represent data for single day
 struct CandleStick {
     let date: Date
     let high: Double

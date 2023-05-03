@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EC01458629FA68510093BB2A /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458529FA68510093BB2A /* SearchResponse.swift */; };
-		EC01458929FA81CC0093BB2A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458829FA81CC0093BB2A /* Extensions.swift */; };
+		EC01458929FA81CC0093BB2A /* Notification+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458829FA81CC0093BB2A /* Notification+Ext.swift */; };
 		EC01458B29FA89600093BB2A /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458A29FA89600093BB2A /* SearchResultTableViewCell.swift */; };
 		EC01458E29FBA7800093BB2A /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = EC01458D29FBA7800093BB2A /* FloatingPanel */; };
 		EC01459029FBBA260093BB2A /* NewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC01458F29FBBA260093BB2A /* NewHeaderView.swift */; };
@@ -33,11 +33,27 @@
 		ECEF622629F9BF4300675794 /* WatchListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEF622529F9BF4300675794 /* WatchListViewController.swift */; };
 		ECEF622B29F9BF4400675794 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECEF622A29F9BF4400675794 /* Assets.xcassets */; };
 		ECEF622E29F9BF4400675794 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECEF622C29F9BF4400675794 /* LaunchScreen.storyboard */; };
+		ECF72BE92A00FFAF0042F433 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF72BE82A00FFAF0042F433 /* UIView+Ext.swift */; };
+		ECF72BEB2A01002D0042F433 /* NumberFormatter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF72BEA2A01002D0042F433 /* NumberFormatter+Ext.swift */; };
+		ECF72BED2A01005F0042F433 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF72BEC2A01005F0042F433 /* UIImageView+Ext.swift */; };
+		ECF72BEF2A0100F60042F433 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF72BEE2A0100F60042F433 /* String+Ext.swift */; };
+		ECF72BF12A0102650042F433 /* DateFormatter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF72BF02A0102650042F433 /* DateFormatter+Ext.swift */; };
+		ECF72BFD2A0133220042F433 /* StocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF72BFC2A0133220042F433 /* StocksTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ECF72BFE2A0133220042F433 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ECEF621629F9BF4300675794 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ECEF621D29F9BF4300675794;
+			remoteInfo = Stocks;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		EC01458529FA68510093BB2A /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchResponse.swift; path = Stocks/SearchResponse.swift; sourceTree = SOURCE_ROOT; };
-		EC01458829FA81CC0093BB2A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		EC01458829FA81CC0093BB2A /* Notification+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Ext.swift"; sourceTree = "<group>"; };
 		EC01458A29FA89600093BB2A /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		EC01458F29FBBA260093BB2A /* NewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHeaderView.swift; sourceTree = "<group>"; };
 		EC01459129FBFCA00093BB2A /* NewStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewStory.swift; path = Stocks/Controllers/NewStory.swift; sourceTree = SOURCE_ROOT; };
@@ -60,6 +76,13 @@
 		ECEF622A29F9BF4400675794 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECEF622D29F9BF4400675794 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECEF622F29F9BF4400675794 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECF72BE82A00FFAF0042F433 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		ECF72BEA2A01002D0042F433 /* NumberFormatter+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Ext.swift"; sourceTree = "<group>"; };
+		ECF72BEC2A01005F0042F433 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		ECF72BEE2A0100F60042F433 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		ECF72BF02A0102650042F433 /* DateFormatter+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Ext.swift"; sourceTree = "<group>"; };
+		ECF72BFA2A0133220042F433 /* StocksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StocksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECF72BFC2A0133220042F433 /* StocksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,13 +97,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ECF72BF72A0133220042F433 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		EC01458729FA81B70093BB2A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				EC01458829FA81CC0093BB2A /* Extensions.swift */,
+				EC01458829FA81CC0093BB2A /* Notification+Ext.swift */,
+				ECF72BE82A00FFAF0042F433 /* UIView+Ext.swift */,
+				ECF72BEC2A01005F0042F433 /* UIImageView+Ext.swift */,
+				ECF72BEE2A0100F60042F433 /* String+Ext.swift */,
+				ECF72BEA2A01002D0042F433 /* NumberFormatter+Ext.swift */,
+				ECF72BF02A0102650042F433 /* DateFormatter+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -89,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				ECBC6CF62A003879008511C9 /* StockDetailHeaderView.swift */,
-				ECBC6CF82A003F9D008511C9 /* MetricCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -108,7 +142,6 @@
 		ECD3803B29FA45C8008EFB65 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EC0C782829FE89D900C9679B /* WatchListTableViewCell.swift */,
 				EC0C782A29FE8B7200C9679B /* StockChartView.swift */,
 			);
 			path = View;
@@ -146,6 +179,7 @@
 			children = (
 				ECEF622529F9BF4300675794 /* WatchListViewController.swift */,
 				ECD3803B29FA45C8008EFB65 /* View */,
+				ECF72BF52A0131090042F433 /* Cell */,
 			);
 			path = WatchListController;
 			sourceTree = "<group>";
@@ -154,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				ECD3804229FA4754008EFB65 /* NewsViewController.swift */,
+				ECF72BF42A0130FA0042F433 /* Cell */,
 				ECD3804129FA473F008EFB65 /* View */,
 			);
 			path = NewsViewController;
@@ -163,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				EC01458F29FBBA260093BB2A /* NewHeaderView.swift */,
-				EC01459329FC0A3E0093BB2A /* NewStoryTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,6 +207,7 @@
 			children = (
 				ECD3804429FA47AA008EFB65 /* StockDetailsViewController.swift */,
 				ECBC6CF52A003865008511C9 /* View */,
+				ECF72BF32A0130E80042F433 /* Cell */,
 			);
 			path = StockDetailController;
 			sourceTree = "<group>";
@@ -181,7 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				ECD3804629FA47CC008EFB65 /* SearchResultsViewController.swift */,
-				EC01458A29FA89600093BB2A /* SearchResultTableViewCell.swift */,
+				ECF72BF22A0115C90042F433 /* Cell */,
 			);
 			path = SearchResultsController;
 			sourceTree = "<group>";
@@ -201,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				ECEF622029F9BF4300675794 /* Stocks */,
+				ECF72BFB2A0133220042F433 /* StocksTests */,
 				ECEF621F29F9BF4300675794 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -209,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				ECEF621E29F9BF4300675794 /* Stocks.app */,
+				ECF72BFA2A0133220042F433 /* StocksTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -225,6 +262,46 @@
 				ECEF622F29F9BF4400675794 /* Info.plist */,
 			);
 			path = Stocks;
+			sourceTree = "<group>";
+		};
+		ECF72BF22A0115C90042F433 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EC01458A29FA89600093BB2A /* SearchResultTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		ECF72BF32A0130E80042F433 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				ECBC6CF82A003F9D008511C9 /* MetricCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		ECF72BF42A0130FA0042F433 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EC01459329FC0A3E0093BB2A /* NewStoryTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		ECF72BF52A0131090042F433 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EC0C782829FE89D900C9679B /* WatchListTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		ECF72BFB2A0133220042F433 /* StocksTests */ = {
+			isa = PBXGroup;
+			children = (
+				ECF72BFC2A0133220042F433 /* StocksTests.swift */,
+			);
+			path = StocksTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +330,24 @@
 			productReference = ECEF621E29F9BF4300675794 /* Stocks.app */;
 			productType = "com.apple.product-type.application";
 		};
+		ECF72BF92A0133220042F433 /* StocksTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ECF72C002A0133220042F433 /* Build configuration list for PBXNativeTarget "StocksTests" */;
+			buildPhases = (
+				ECF72BF62A0133220042F433 /* Sources */,
+				ECF72BF72A0133220042F433 /* Frameworks */,
+				ECF72BF82A0133220042F433 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ECF72BFF2A0133220042F433 /* PBXTargetDependency */,
+			);
+			name = StocksTests;
+			productName = StocksTests;
+			productReference = ECF72BFA2A0133220042F433 /* StocksTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -265,6 +360,10 @@
 				TargetAttributes = {
 					ECEF621D29F9BF4300675794 = {
 						CreatedOnToolsVersion = 14.2;
+					};
+					ECF72BF92A0133220042F433 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = ECEF621D29F9BF4300675794;
 					};
 				};
 			};
@@ -287,6 +386,7 @@
 			projectRoot = "";
 			targets = (
 				ECEF621D29F9BF4300675794 /* Stocks */,
+				ECF72BF92A0133220042F433 /* StocksTests */,
 			);
 		};
 /* End PBXProject section */
@@ -301,6 +401,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ECF72BF82A0133220042F433 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -312,13 +419,17 @@
 				EC01459029FBBA260093BB2A /* NewHeaderView.swift in Sources */,
 				ECEF622629F9BF4300675794 /* WatchListViewController.swift in Sources */,
 				ECD3804B29FA5271008EFB65 /* APICaller.swift in Sources */,
+				ECF72BED2A01005F0042F433 /* UIImageView+Ext.swift in Sources */,
 				ECD3804729FA47CC008EFB65 /* SearchResultsViewController.swift in Sources */,
+				ECF72BEF2A0100F60042F433 /* String+Ext.swift in Sources */,
 				ECD3804329FA4754008EFB65 /* NewsViewController.swift in Sources */,
 				ECD3804D29FA5280008EFB65 /* PersistentManager.swift in Sources */,
-				EC01458929FA81CC0093BB2A /* Extensions.swift in Sources */,
+				EC01458929FA81CC0093BB2A /* Notification+Ext.swift in Sources */,
 				EC01458B29FA89600093BB2A /* SearchResultTableViewCell.swift in Sources */,
+				ECF72BF12A0102650042F433 /* DateFormatter+Ext.swift in Sources */,
 				ECEF622229F9BF4300675794 /* AppDelegate.swift in Sources */,
 				EC01458629FA68510093BB2A /* SearchResponse.swift in Sources */,
+				ECF72BE92A00FFAF0042F433 /* UIView+Ext.swift in Sources */,
 				EC0C782B29FE8B7200C9679B /* StockChartView.swift in Sources */,
 				EC52175129FD7FF000094D80 /* MarketDataResponse.swift in Sources */,
 				ECD3804F29FA5293008EFB65 /* HapticsManager.swift in Sources */,
@@ -326,12 +437,29 @@
 				ECBC6CF72A003879008511C9 /* StockDetailHeaderView.swift in Sources */,
 				ECBC6CF42A003450008511C9 /* FinancialMetricsResponse.swift in Sources */,
 				EC0C782929FE89D900C9679B /* WatchListTableViewCell.swift in Sources */,
+				ECF72BEB2A01002D0042F433 /* NumberFormatter+Ext.swift in Sources */,
 				EC01459429FC0A3E0093BB2A /* NewStoryTableViewCell.swift in Sources */,
 				ECD3804529FA47AA008EFB65 /* StockDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ECF72BF62A0133220042F433 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECF72BFD2A0133220042F433 /* StocksTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ECF72BFF2A0133220042F433 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ECEF621D29F9BF4300675794 /* Stocks */;
+			targetProxy = ECF72BFE2A0133220042F433 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		ECEF622C29F9BF4400675794 /* LaunchScreen.storyboard */ = {
@@ -523,6 +651,42 @@
 			};
 			name = Release;
 		};
+		ECF72C012A0133220042F433 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3496F3A4HL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.my.StocksTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stocks.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Stocks";
+			};
+			name = Debug;
+		};
+		ECF72C022A0133220042F433 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3496F3A4HL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.my.StocksTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stocks.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Stocks";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -540,6 +704,15 @@
 			buildConfigurations = (
 				ECEF623329F9BF4400675794 /* Debug */,
 				ECEF623429F9BF4400675794 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ECF72C002A0133220042F433 /* Build configuration list for PBXNativeTarget "StocksTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ECF72C012A0133220042F433 /* Debug */,
+				ECF72C022A0133220042F433 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -8,15 +8,21 @@
 import SDWebImage
 import UIKit
 
+/// News Story tableView Cell
 final class NewStoryTableViewCell: UITableViewCell {
+    /// Cell id
     static let identifier = "NewStoryTableViewCell"
+    /// Ideal height of cell
     static let preferredHeight: CGFloat = 140
-    
+
+    ///Cell viewModel
     struct ViewModel {
         let source: String
         let headline: String
         let dateString: String
         let imageURL: URL?
+
+        //MARK: - Init
 
         init(model: NewStory) {
             self.source = model.source
@@ -25,6 +31,8 @@ final class NewStoryTableViewCell: UITableViewCell {
             self.imageURL = URL(string: model.image)
         }
     }
+
+    //MARK: - UILabel
 
     private let sourceLabel: UILabel = {
         let label = UILabel()
@@ -57,6 +65,8 @@ final class NewStoryTableViewCell: UITableViewCell {
         return imageView
     }()
 
+    //MARK: - Init
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .secondarySystemBackground
@@ -67,6 +77,8 @@ final class NewStoryTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    //MARK: - Setups
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -107,6 +119,8 @@ final class NewStoryTableViewCell: UITableViewCell {
         storyImage.image = nil
     }
 
+    /// Configure view
+    /// - Parameter viewModel: View ViewModel
     public func configure(with viewModel: ViewModel) {
         headlineLabel.text = viewModel.headline
         sourceLabel.text = viewModel.source
