@@ -154,14 +154,14 @@ final class StockDetailsViewController: UIViewController {
 
         var viewModels = [MetricCollectionViewCell.ViewModel]()
         if let metric = metric {
-            viewModels.append(.init(name: "52W High", value: "\(metric.AnnualWeekHigh)"))
+            viewModels.append(.init(name: "52W High", value: "\(metric.AnnualWeekHigh ?? 0.0)"))
             viewModels.append(.init(name: "52L High", value: "\(metric.AnnualWeekLow)"))
             viewModels.append(.init(name: "52W Return", value: "\(metric.AnnualWeekPriceReturnDaily)"))
-            viewModels.append(.init(name: "Beta", value: "\(metric.beta)"))
-            viewModels.append(.init(name: "10D Vol.", value: "\(metric.TenDayAverageTradingVolume)"))
+            viewModels.append(.init(name: "Beta", value: "\(metric.beta ?? 0)"))
+            viewModels.append(.init(name: "10D Vol.", value: "\(metric.TenDayAverageTradingVolume ?? 0)"))
         }
 
-        let change = getChangePercentage(symbol: symbol, data: candleStickData)
+        let change = getChangePercentage(data: candleStickData)
         headerView.configure(
             chartViewModle: .init(
                 data: candleStickData.reversed().map { $0.close },
@@ -175,10 +175,9 @@ final class StockDetailsViewController: UIViewController {
 
     /// Get change percenetage
     /// - Parameters:
-    /// - symbol: Symbol of company
     /// - data: Collection of data
     /// - Returns: Percent
-    private func getChangePercentage(symbol: String, data: [CandleStick]) -> Double {
+    private func getChangePercentage(data: [CandleStick]) -> Double {
         let latestDate = data[0].date
         guard let latestClose = data.first?.close,
               let priorClose = data.first(where: {

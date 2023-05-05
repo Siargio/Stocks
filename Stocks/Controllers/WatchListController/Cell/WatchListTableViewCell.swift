@@ -41,7 +41,7 @@ final class WatchListTableViewCell: UITableViewCell {
 
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15, weight: .medium)
+        label.font = .systemFont(ofSize: 14, weight: .medium)
         return label
     }()
 
@@ -100,7 +100,7 @@ final class WatchListTableViewCell: UITableViewCell {
         nameLabel.frame = CGRect(
             x: separatorInset.left,
             y: symbolLabel.bottom,
-            width: nameLabel.width,
+            width: width/2.5,
             height: nameLabel.height)
 
         let currentWidth = max(

@@ -37,7 +37,6 @@ final class NewStoryTableViewCell: UITableViewCell {
     private let sourceLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .medium)
-
         return label
     }()
 
